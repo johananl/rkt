@@ -420,7 +420,7 @@ func actionIOMux(statusFile string) error {
 		if err != nil {
 			return fmt.Errorf("couldn't analyze the full log path %s: %s", logFullPath, err)
 		} else if !match {
-			return fmt.Errorf("log path is not inside /rkt/kubernetes/log, refusing path traversal")
+			return fmt.Errorf("log path %s is not inside /rkt/kubernetes/log, refusing path traversal", logFullPath)
 		}
 
 		logFile, err = os.OpenFile(logFullPath, os.O_CREATE|os.O_WRONLY|os.O_TRUNC, os.ModePerm)
